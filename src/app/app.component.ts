@@ -8,14 +8,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'app';
-  personagem = {};
+  personagens;
 
   constructor(private http: HttpClient){
   }
 
   ngOnInit(){
-    this.http.get('https://swapi.co/api/people/1/').subscribe((dados) => {
-      this.personagem = dados;
+    this.http.get<any>('https://swapi.co/api/people/').subscribe((dados) => {
+      this.personagens = dados.results;
     });
   }
 }
